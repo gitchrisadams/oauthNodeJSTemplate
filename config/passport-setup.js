@@ -22,6 +22,7 @@ passport.use(
             clientSecret: keys.google.clientSecret
         },
         (accessToken, refreshToken, profile, done) => {
+            console.log("profile", profile._json.picture);
             // Save data from Google in our MongoDB:
             // Check if user exists before adding it:
             User.findOne({ googleId: profile.id }).then(currentUser => {
@@ -33,7 +34,8 @@ passport.use(
                     // If no user, create it in db:
                     new User({
                         username: profile.displayName,
-                        googleId: profile.id
+                        googleId: profile.id,
+                        thumbnail: profile._json.picture
                     })
                         .save()
                         .then(newUser => {

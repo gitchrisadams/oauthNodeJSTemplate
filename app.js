@@ -1,5 +1,6 @@
 const express = require("express");
 const authRoutes = require("./routes/auth-routes");
+const profileRoutes = require("./routes/profile-routes");
 const app = express();
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
@@ -33,6 +34,7 @@ mongoose.connect(
 
 // Setup routes:
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
 
 app.listen(3000, () => {
     console.log("app is listening on port 3000");
@@ -40,5 +42,5 @@ app.listen(3000, () => {
 
 // Route for home page route:
 app.get("/", (req, res) => {
-    res.render("home");
+    res.render("home", { user: req.user });
 });

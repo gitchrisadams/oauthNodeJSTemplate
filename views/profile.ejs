@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>OAuth Template - Login</title>
+        <title>OAuth Template</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="" />
@@ -46,12 +46,9 @@
                 padding: 0 10px;
                 color: #333;
             }
-            .google-btn {
-                color: #fff;
-                text-decoration: none;
-                font-size: 18px;
-                padding: 10px;
-                background: #ff5353;
+            .user-thumbnail {
+                width: 100px;
+                height: 100px;
             }
         </style>
     </head>
@@ -76,9 +73,14 @@
         </nav>
 
         <header>
-            <h1>Login using...</h1>
-            <a class="google-btn" href="/auth/google">Google+</a>
+            <h1>Welcome to your profile, <%=user.username %></h1>
         </header>
+        <main>
+            <img class="user-thumbnail" src="<%=user.thumbnail %>" />
+            <p>
+                This is your profile thumbnail.
+            </p>
+        </main>
 
         <script src="" async defer></script>
     </body>
